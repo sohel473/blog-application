@@ -7,7 +7,7 @@
       "image": "https://crowdbotics.ghost.io/content/images/2019/05/MERN.png",
       "tags": ["javascript", "nodejs", "react"],
       "likes": 8,
-      "isSaved": false,
+      "isSaved": true,
       "createdAt": "2020-07-15"
     },
     {
@@ -47,7 +47,7 @@
       "image": "https://res.cloudinary.com/daily-now/image/upload/f_auto,q_auto/v1/posts/1afab632ce21854f5a7dd1011d855e43",
       "tags": ["react", "javascript", "testing", "programming"],
       "likes": 88,
-      "isSaved": false,
+      "isSaved": true,
       "createdAt": "2023-01-13"
     },
     {
@@ -67,7 +67,7 @@
       "image": "https://res.cloudinary.com/daily-now/image/upload/f_auto,q_auto/v1/posts/eb42d2ca714ecc04115b6733b0d22ce7",
       "tags": ["programming", "DS", "Algo"],
       "likes": 184,
-      "isSaved": false,
+      "isSaved": true,
       "createdAt": "2023-01-13"
     },
     {
