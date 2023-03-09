@@ -26,7 +26,7 @@ export default function BlogItem(props) {
           </Link>
           <div className="lws-tags">
             {/* if blogs tags length is greater than 3 then show first 3 tags
-            with "..." else show all tags */}
+            with rest tag length number else show all tags */}
             {blog.tags.length > 3
               ? blog.tags.slice(0, 3).map((tag) => {
                   return <span key={tag}>#{tag}</span>;

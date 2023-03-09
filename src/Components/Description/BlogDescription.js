@@ -1,44 +1,43 @@
 import React from "react";
-import mern from "../../assets/images/mern.webp";
-export default function BlogDescription() {
+
+export default function BlogDescription(props) {
+  const { blog } = props;
+
   return (
     <>
       <main className="post">
         <img
-          src={mern}
-          alt="githum"
+          src={blog.image}
+          alt={blog.title}
           className="w-full rounded-md"
           id="lws-megaThumb"
         />
         <div>
           <h1 className="mt-6 text-2xl post-title" id="lws-singleTitle">
-            MERN stack for Web Development
+            {blog.title}
           </h1>
           <div className="tags" id="lws-singleTags">
-            <span>#python,</span> <span>#tech,</span> <span>#git</span>
+            {blog?.tags?.map((tag) => {
+              return <span key={tag}>#{tag} </span>;
+            })}
           </div>
           <div className="btn-group">
             {/* <!-- handle like on button click --> */}
             <button className="like-btn" id="lws-singleLinks">
-              <i className="fa-regular fa-thumbs-up"></i> 100
+              <i className="fa-regular fa-thumbs-up"></i> {blog.likes}
             </button>
             {/* <!-- handle save on button click --> */}
             {/* <!-- use ".active" class and "Saved" text  if a post is saved, other wise "Save" --> */}
-            <button className="active save-btn" id="lws-singleSavedBtn">
-              <i className="fa-regular fa-bookmark"></i> Saved
+            <button
+              className={`${blog.isSaved && "active"} save-btn`}
+              id="lws-singleSavedBtn"
+            >
+              <i className="fa-regular fa-bookmark"></i>{" "}
+              {blog.isSaved ? "Saved" : "Save"}
             </button>
           </div>
           <div className="mt-6">
-            <p>
-              A MERN stack comprises a collection of four frameworks
-              (MongoDB, ExpressJs, ReactJs and NodeJs) used to develop
-              full-stack javascript solutions for rapid, scalable, and
-              secure applications. Each framework serves a different
-              purpose in creating successful web applications. It is an
-              excellent choice for companies looking to develop
-              high-quality responsive applications quickly using just one
-              language.
-            </p>
+            <p>{blog.description}</p>
           </div>
         </div>
       </main>
