@@ -1,25 +1,29 @@
 import React from "react";
-import git from "../../assets/images/git.webp";
 import { Link } from "react-router-dom";
 
-export default function RelatedBlog() {
+export default function RelatedBlog(props) {
+  const { blog } = props;
   return (
     <>
       <div className="card">
-        <Link to={`/blogs/${1}`}>
-          <img src={git} className="card-image" alt="" />
+        <Link to={`/blogs/${blog.id}`}>
+          <img src={blog.image} className="card-image" alt={blog.title} />
         </Link>
         <div className="p-4">
           <Link
-            to={`/blogs/${1}`}
+            to={`/blogs/${blog.id}`}
             className="text-lg post-title lws-RelatedPostTitle"
           >
-            Top Github Alternatives
+            {blog.title}
           </Link>
           <div className="mb-0 tags">
-            <span>#python,</span> <span>#tech,</span> <span>#git</span>
+            {blog?.tags?.map((tag) => (
+              <span key={tag} className="tag">
+                #{tag}
+              </span>
+            ))}
           </div>
-          <p>2010-03-27</p>
+          <p>{blog.createdAt}</p>
         </div>
       </div>
     </>

@@ -33,8 +33,7 @@ export default function Blog() {
     content = <BlogDescription blog={blog} />;
   }
 
-  console.log(blog);
-  // console.log(blog === true);
+  // console.log(blogId);
 
   return (
     <>
@@ -56,7 +55,7 @@ export default function Blog() {
         {/* <!-- detailed post ends --> */}
 
         {/* <!-- related posts --> */}
-        <RelatedBlogs />
+        <RelatedBlogs blogId={blogId} tags={blog.tags} />
         {/* <!-- related posts ends --> */}
       </section>
     </>
