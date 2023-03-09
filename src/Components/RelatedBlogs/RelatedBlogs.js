@@ -15,7 +15,7 @@ export default function RelatedBlogs(props) {
   // console.log(blogId);
 
   React.useEffect(() => {
-    console.log(blogId);
+    // console.log(blogId);
     dispatch(fetchRelatedBlogs({ tags, id: blogId }));
   }, [dispatch, blogId, tags]);
 

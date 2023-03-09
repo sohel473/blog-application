@@ -1,7 +1,19 @@
 import React from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { saveBlog } from "../../features/blog/BlogSlice";
 
 export default function BlogDescription(props) {
   const { blog } = props;
+
+  const { saveStatus } = useSelector((state) => state.blog);
+
+  const dispatch = useDispatch();
+
+  // console.log(saveStatus);
+
+  const handleSave = () => {
+    dispatch(saveBlog({ id: blog.id, saved: !saveStatus }));
+  };
 
   return (
     <>
@@ -31,6 +43,7 @@ export default function BlogDescription(props) {
             <button
               className={`${blog.isSaved && "active"} save-btn`}
               id="lws-singleSavedBtn"
+              onClick={handleSave}
             >
               <i className="fa-regular fa-bookmark"></i>{" "}
               {blog.isSaved ? "Saved" : "Save"}
