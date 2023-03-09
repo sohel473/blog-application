@@ -25,9 +25,16 @@ export default function BlogItem(props) {
             {blog.title}
           </Link>
           <div className="lws-tags">
-            {blog.tags.map((tag) => (
-              <span key={tag}>#{tag}</span>
-            ))}
+            {/* if blogs tags length is greater than 3 then show first 3 tags
+            with "..." else show all tags */}
+            {blog.tags.length > 3
+              ? blog.tags.slice(0, 3).map((tag) => {
+                  return <span key={tag}>#{tag}</span>;
+                })
+              : blog.tags.map((tag) => {
+                  return <span key={tag}>#{tag}</span>;
+                })}
+            {blog.tags.length > 3 && <span>{blog.tags.length - 3}+</span>}
           </div>
           {/* <!-- Show this element if post is saved --> */}
           {blog.isSaved && (
