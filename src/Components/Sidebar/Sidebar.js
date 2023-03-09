@@ -1,10 +1,18 @@
 import React from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { setSort, setFilter } from "../../features/sidebar/SidebarSlice";
 
 export default function Sidebar() {
-  const [filter, setFilter] = React.useState("all");
+  const { sort, filter } = useSelector((state) => state.sidebar);
 
-  const handleFilter = (e) => {
-    setFilter(e.target.value);
+  const dispatch = useDispatch();
+
+  const handleSortChange = (e) => {
+    dispatch(setSort(e.target.value));
+  };
+
+  const handleFilterChange = (e) => {
+    dispatch(setFilter(e.target.value));
   };
 
   return (
@@ -18,6 +26,8 @@ export default function Sidebar() {
               name="sort"
               id="lws-sort"
               className="w-full max-w-[150px] border-2 rounded-md text-gray-500"
+              value={sort}
+              onChange={handleSortChange}
             >
               <option value="">Default</option>
               <option value="newest">Newest</option>
@@ -33,10 +43,10 @@ export default function Sidebar() {
                   type="radio"
                   name="filter"
                   id="lws-all"
-                  checked={filter === "all"}
-                  value="all"
-                  onChange={handleFilter}
                   className="radio"
+                  value="all"
+                  checked={filter === "all"}
+                  onChange={handleFilterChange}
                 />
                 <label htmlFor="lws-all">All</label>
               </div>
@@ -46,9 +56,9 @@ export default function Sidebar() {
                   name="filter"
                   id="lws-saved"
                   className="radio"
-                  checked={filter === "saved"}
                   value="saved"
-                  onChange={handleFilter}
+                  checked={filter === "saved"}
+                  onChange={handleFilterChange}
                 />
                 <label htmlFor="lws-saved">Saved</label>
               </div>
