@@ -24,7 +24,28 @@ export default function Blogs() {
   } else if (isError) {
     content = <div>{error}</div>;
   } else {
-    content = blogs.map((blog) => <BlogItem key={blog.id} blog={blog} />);
+    // Sort blogs
+    let sortedBlogs = [...blogs];
+    if (sort === "newest") {
+      sortedBlogs.sort((a, b) => {
+        return new Date(b.createdAt) - new Date(a.createdAt);
+      });
+    }
+    if (sort === "most_liked") {
+      sortedBlogs.sort((a, b) => {
+        return b.likes - a.likes;
+      });
+    }
+
+    // Filter blogs
+    let filteredBlogs = sortedBlogs;
+    if (filter === "saved") {
+      filteredBlogs = sortedBlogs.filter((blog) => blog.isSaved);
+    }
+
+    content = filteredBlogs.map((blog) => {
+      return <BlogItem key={blog.id} blog={blog} />;
+    });
   }
 
   return (
