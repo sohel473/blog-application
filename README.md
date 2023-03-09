@@ -1,46 +1,49 @@
-# Getting Started with Create React App and Redux
+# Project Readme
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) template.
+This project is a web application that displays several blogs fetched from a fake JSON server. The application is built using the 'react-router-dom' package for routing.
 
-## Available Scripts
+## Requirements
 
-In the project directory, you can run:
+The following are the requirements for this project:
 
-### `npm start`
+- A fake JSON server is provided, and there will be several blogs that you have to fetch and show on the home page.
+- The blogs will be displayed in the first order, that is, the serial sent from the API should be displayed in the same serial. Later, if you click on "Newest", "Most Liked" from the Sort menu, the newest and the most liked filters will be displayed sequentially.
+- If you click on "like", the number of likes will increase. Since there is no authentication, you can give as many likes as you want, and it will be synced with the server.
+- If you click on "Saved" in the left side menu, only the saved ones will be displayed.
+- If you click on the Title or Thumbnail of the card, it will take you to the Details page. In this case, routing must be managed through the 'react-router-dom' package. After deploying the assignment, make sure that even if you go directly to that page, the Blog Details are visible.
+- If you click on the "Save" button on the Details page, it will be bookmarked separately, that is, the 'Save' text will be 'Saved' and will be blue (for this, a CSS class called 'active' has to be created).
+- On the Details page, the 'Related Blogs' section will show related blogs by tag.
+- If you go to the detail page of the blog post, that post should not come in the list of 'Related Blogs'.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Setup
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Clone the repository to your local machine.
 
-### `npm test`
+First of all, run the server. to do that, follow the instructions below:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+0. Open new terminal.
+1. Change Directory using the command `cd server`
+2. Install the dependencies using the command `npm install`.
+3. Start the application using the command `npm start`.
+4. Access the server by opening `http://localhost:9000` in your browser.
 
-### `npm run build`
+Then to run this project, follow the instructions below:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+0. Open another terminal.
+2. Install the dependencies using the command `npm install`.
+3. Start the JSON Server using the command `npm run server`.
+4. Start the application using the command `npm start`.
+5. Access the application by opening `http://localhost:3000` in your browser.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Technologies
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+This project was built using the following technologies:
 
-### `npm run eject`
+- React.js
+- Redux Toolkit
+- JSON Server
+- JavaScript
+- HTML
+- CSS
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+Deployment Link: https://blog-application-sohel473.netlify.app/
