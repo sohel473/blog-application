@@ -1,10 +1,12 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { getBlog } from "./BlogAPI";
 import { saveBlogRequest } from "./BlogSaveAPI";
+import { likeBlogRequest } from "./LikeBlogAPI";
 
 const initialState = {
   blog: {},
   saveStatus: null,
+  likes: 0,
   isLoading: false,
   isError: false,
   error: "",
@@ -20,11 +22,19 @@ export const saveBlog = createAsyncThunk(
   "blogSave/saveBlog",
   async ({ id, saved }) => {
     const saveStatus = await saveBlogRequest({ id, saved });
-
     return saveStatus;
   }
 );
 
+export const likeBlog = createAsyncThunk(
+  "blog/likeBlog",
+  async ({ id, count }) => {
+    const likes = await likeBlogRequest({ id, count });
+    return likes;
+  }
+);
+
+// slice
 const blogSlice = createSlice({
   name: "blog",
   initialState,
@@ -39,6 +49,7 @@ const blogSlice = createSlice({
         state.isError = false;
         state.blog = action.payload;
         state.saveStatus = action.payload.isSaved;
+        state.likes = action.payload.likes;
         // console.log(action.payload);
         state.error = "";
       })
@@ -53,6 +64,14 @@ const blogSlice = createSlice({
         console.log(action.payload);
       })
       .addCase(saveBlog.rejected, (state, action) => {
+        state.isError = true;
+        state.error = action.error.message;
+      })
+      .addCase(likeBlog.fulfilled, (state, action) => {
+        state.likes = action.payload.likes;
+        state.blog.likes = action.payload.likes;
+      })
+      .addCase(likeBlog.rejected, (state, action) => {
         state.isError = true;
         state.error = action.error.message;
       });

@@ -1,18 +1,23 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { saveBlog } from "../../features/blog/BlogSlice";
+import { likeBlog, saveBlog } from "../../features/blog/BlogSlice";
 
 export default function BlogDescription(props) {
   const { blog } = props;
 
-  const { saveStatus } = useSelector((state) => state.blog);
+  const { saveStatus, likes } = useSelector((state) => state.blog);
 
   const dispatch = useDispatch();
 
   // console.log(saveStatus);
+  console.log(likes);
 
   const handleSave = () => {
     dispatch(saveBlog({ id: blog.id, saved: !saveStatus }));
+  };
+
+  const handleLike = () => {
+    dispatch(likeBlog({ id: blog.id, count: likes + 1 }));
   };
 
   return (
@@ -35,7 +40,11 @@ export default function BlogDescription(props) {
           </div>
           <div className="btn-group">
             {/* <!-- handle like on button click --> */}
-            <button className="like-btn" id="lws-singleLinks">
+            <button
+              className="like-btn"
+              id="lws-singleLinks"
+              onClick={handleLike}
+            >
               <i className="fa-regular fa-thumbs-up"></i> {blog.likes}
             </button>
             {/* <!-- handle save on button click --> */}
