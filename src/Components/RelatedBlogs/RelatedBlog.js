@@ -2,7 +2,7 @@ import React from "react";
 import git from "../../assets/images/git.webp";
 import { Link } from "react-router-dom";
 
-export default function Tag() {
+export default function RelatedBlog() {
   return (
     <>
       <div className="card">

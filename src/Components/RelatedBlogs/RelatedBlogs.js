@@ -1,7 +1,7 @@
 import React from "react";
-import Tag from "./Tag";
+import RelatedBlog from "./RelatedBlog";
 
-export default function Tags() {
+export default function RelatedBlogs() {
   return (
     <>
       <aside>
@@ -10,7 +10,7 @@ export default function Tags() {
         </h4>
         <div className="space-y-4 related-post-container">
           {/* <!-- related post  --> */}
-          <Tag />
+          <RelatedBlog />
           {/* <!-- related post ends --> */}
         </div>
       </aside>

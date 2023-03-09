@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import DetailedBlog from "../Components/Description/BlogDescription";
-import Tags from "../Components/Tags/Tags";
+import RelatedBlogs from "../Components/RelatedBlogs/RelatedBlogs";
 
 export default function Blog() {
   return (
@@ -24,7 +24,7 @@ export default function Blog() {
         {/* <!-- detailed post ends --> */}
 
         {/* <!-- related posts --> */}
-        <Tags />
+        <RelatedBlogs />
         {/* <!-- related posts ends --> */}
       </section>
     </>
